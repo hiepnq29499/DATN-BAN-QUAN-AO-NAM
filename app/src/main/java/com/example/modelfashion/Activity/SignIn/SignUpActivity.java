@@ -226,8 +226,8 @@ public class SignUpActivity extends AppCompatActivity {
     // validate
     private Boolean validate() {
         Pattern special = Pattern.compile("[!#$%&*^()_+=|<>?{}\\[\\]~-]");
-        if(edtName.getText().toString().contains(" ")){
-            Toast.makeText(SignUpActivity.this, "Tên đăng nhập không có dấu cách", Toast.LENGTH_SHORT).show();
+        if(edtName.getText().toString().contains(" ") || edtPw.getText().toString().contains(" ")){
+            Toast.makeText(SignUpActivity.this, "Tên đăng nhập, mật khẩu không có dấu cách", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (edtName.getText().toString().isEmpty() || edtEmail.getText().toString().isEmpty() || edtPw.getText().toString().isEmpty() || edtRePw.getText().toString().isEmpty()) {

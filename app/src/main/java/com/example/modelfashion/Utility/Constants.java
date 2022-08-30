@@ -30,7 +30,7 @@ public class Constants {
     public static final String KEY_AVARTAR = "avatar";
     public static final String KEY_ACTIVE_STATUS = "activeStatus";
     public static final String KEY_ACCOUNT_TYPE = "accountType";
-    public static final String KEY_IP = "192.168.1.57";
+    public static final String KEY_IP = "192.168.139.96";
 
     // login
     public static final String KEY_SAVE_USER_INFO = "KEY_SAVE_USER_INFO";

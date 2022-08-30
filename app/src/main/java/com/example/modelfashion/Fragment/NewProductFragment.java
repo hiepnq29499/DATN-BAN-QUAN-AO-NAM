@@ -163,6 +163,7 @@ public class NewProductFragment extends Fragment {
                 }
             }
         });
+
         tvSeeBrand.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -226,7 +227,11 @@ public class NewProductFragment extends Fragment {
 
                             @Override
                             public void imgAddToCartClick(int position, MyProduct product) {
-
+                                if(user_id.equalsIgnoreCase("null")){
+                                    Toast.makeText(getContext(), "Thực hiện đăng nhập để sử dụng chức năng này", Toast.LENGTH_SHORT).show();
+                                }else {
+                                    AddToFavorite(product.getId());
+                                }
                             }
 
                             @Override
@@ -325,6 +330,23 @@ public class NewProductFragment extends Fragment {
 
                 }
             });
+    }
+    private void AddToFavorite(String product_id){
+        ApiRetrofit.apiRetrofit.InsertFavorite(user_id, product_id).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if(response.body().equalsIgnoreCase("true")){
+                    Toast.makeText(getContext(), "Thêm vào 'Theo dõi' thành công", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(getContext(), "Sản phẩm đang theo dõi", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
+            }
+        });
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
